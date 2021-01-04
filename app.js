@@ -2,35 +2,51 @@ const leftIcon = document.querySelector('.left-icon');
 const rightIcon = document.querySelector('.right-icon');
 
 const images = Array.from(document.querySelectorAll('img'));
-let activeIndex = 1;
-// images[0].className = 'last';
-images[0].className = 'active';
-images[1].className = 'next';
-images[2].className = 'next';
-images[3].className = 'next';
 
-rightIcon.addEventListener('click',(e) => {
-    if(activeIndex === images.length){
-        activeIndex = 0;
-    }
-    console.log(activeIndex);
+let counter = 1;
+
+images.forEach((item,index)=>{
+        item.style.transform = `translateX(${(index-1)*100}%)`;
+});
+
+rightIcon.addEventListener('click',()=>{
+    counter++;
     images.forEach((item,index)=>{
-        if(index === activeIndex){
-            item.className = 'active'
-        }
-        if(index > activeIndex){
-            item.className = 'next'
-        }
-        if(index > activeIndex + 1){
-            // item.className = 'next'
-        }        
+        item.style.transform = `translateX(${(index-counter)*100}%)`;
+        item.style.transition = `transform 2s ease-out`;
     });
-    activeIndex += 1;
-    // images[1].className = 'last';
-    // images[2].className = 'active';
-    // images[3].className = 'next';
+});
+leftIcon.addEventListener('click',()=>{
+    counter--;
+    images.forEach((item,index)=>{
+        item.style.transform = `translateX(${(index-counter)*100}%)`;
+        item.style.transition = `transform 2s ease-out`;
+    });
+});
+// images.forEach((item,index)=>{
+//         item.addEventListener('transitionend',()=>{
+//         console.log('Fired');
+//         });
+//     });
+document.querySelector('.slide-container').addEventListener('transitionend',()=>{
+    if(images[counter].id === 'lastClone'){
+        counter = images.length - 2;           
+        images[counter].style.transition = 'none';
+        console.log(images[counter]);
+        console.log(counter);
+    }
+    if(images[counter].id === 'firstClone'){
+        counter = 1;           
+        images[counter].style.transition = 'none';
+        images[counter].style.zIndex = '100';
+        console.log(images[counter]);
+        console.log(counter);
+    }
+    images.forEach((item,index)=>{
+        item.style.transform = `translateX(${(index-counter)*100}%)`;
+        // item.style.transition = `transform 2s ease-out`;
+    });
 });
 
-images.forEach((item,index) => {
-    
-});
+
+

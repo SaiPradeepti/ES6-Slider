@@ -22,22 +22,18 @@ body {
   height: 80%;
   width: 80%;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .slide img {
   height: 100%;
   width: 100%;
   position: absolute;
-  transition: transform 2s ease-out;
 }
 .right-icon,
 .left-icon {
   position: absolute;
-  z-index: 100;
+  z-index: 200;
   color: rgba(255, 255, 255, 1);
-  background: rgba(255, 255, 255, 0.4);
-  padding: 1rem;
-  border-radius: 50%;
 }
 .right-icon {
   top: 50%;
@@ -47,12 +43,19 @@ body {
   top: 50%;
   left: 5%;
 }
+.fas {
+  height: 3rem;
+  width: 3rem;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 1rem;
+  border-radius: 50%;
+}
 .last {
-  transform: translateX(-120%);
+  transform: translateX(-100%);
 }
 .active {
   transform: translateX(0%);
 }
 .next {
-  transform: translateX(120%);
+  transform: translateX(100%);
 }
