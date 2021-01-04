@@ -10,6 +10,7 @@ images.forEach((item,index)=>{
 });
 
 rightIcon.addEventListener('click',()=>{
+    if(counter >= images.length - 1) return;
     counter++;
     images.forEach((item,index)=>{
         item.style.transform = `translateX(${(index-counter)*100}%)`;
@@ -17,6 +18,7 @@ rightIcon.addEventListener('click',()=>{
     });
 });
 leftIcon.addEventListener('click',()=>{
+    if(counter <= 0) return;
     counter--;
     images.forEach((item,index)=>{
         item.style.transform = `translateX(${(index-counter)*100}%)`;
@@ -36,7 +38,7 @@ document.querySelector('.slide-container').addEventListener('transitionend',()=>
         console.log(counter);
     }
     if(images[counter].id === 'firstClone'){
-        counter = 1;           
+        counter = images.length - counter;           
         images[counter].style.transition = 'none';
         images[counter].style.zIndex = '100';
         console.log(images[counter]);

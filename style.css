@@ -12,17 +12,15 @@ body {
 .slide-container {
   height: 80%;
   width: 70%;
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .slide {
-  border: 1px solid red;
   height: 80%;
   width: 80%;
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .slide img {
   height: 100%;
